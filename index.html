@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <title>Beranda - Aplikasi Resep Makanan</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
     <header>
@@ -17,28 +20,38 @@
     </header>
 
     <main>
-        <section>
-            <h2>Resep Terbaru dari Komunitas</h2>
-            <p>Temukan berbagai inspirasi menu makanan menarik yang dibagikan oleh pengguna lain.</p>
+        <div class="container">
+            <section>
+                <h2>Resep Terbaru dari Komunitas</h2>
+                <p>Temukan berbagai inspirasi menu makanan menarik yang dibagikan oleh pengguna lain.</p>
 
-            <!-- Card Resep 1 -->
-            <article>
-                <img src="nasigoreng.jpg" alt="Foto piring berisi Nasi Goreng Spesial lengkap dengan telur mata sapi dan acar">
-                <h3>Nasi Goreng Spesial Nusantara</h3>
-                <p>Oleh: Siti Rahma</p>
-                <p>Nasi goreng gurih dengan bumbu rempah pilihan, suwiran ayam, dan telur mata sapi.</p>
-                <p><a href="detail.html">Lihat Detail Resep</a></p>
-            </article>
+                <!-- Card Resep 1 -->
+                <div class="card">
+                    <article>
+                        <img src="nasigoreng.jpg"
+                            alt="Foto piring berisi Nasi Goreng Spesial lengkap dengan telur mata sapi dan acar">
+                        <h3>Nasi Goreng Spesial Nusantara</h3>
+                        <p>Oleh: Siti Rahma</p>
+                        <p>Nasi goreng gurih dengan bumbu rempah pilihan, suwiran ayam, dan telur mata sapi.</p>
+                        <p><a href="detail.html">Lihat Detail Resep</a></p>
+                    </article>
+                </div>
 
-            <!-- Card Resep 2 -->
-            <article>
-                <img src="ayampedas.jpg" alt="Foto mangkuk berisi Ayam Goreng Krispi balut saus sambal pedas manis">
-                <h3>Ayam Krispi Saus Pedas Manis</h3>
-                <p>Oleh: Budi Santoso</p>
-                <p>Ayam goreng tepung yang renyah di luar, juicy di dalam, disiram saus pedas manis.</p>
-                <p><a href="detail.html">Lihat Detail Resep</a></p>
-            </article>
-        </section>
+                <!-- Card Resep 2 -->
+                <div class="card">
+                    <article>
+                        <img src="ayampedas.jpg"
+                            alt="Foto mangkuk berisi Ayam Goreng Krispi balut saus sambal pedas manis">
+                        <h3>Ayam Krispi Saus Pedas Manis</h3>
+                        <p>Oleh: Budi Santoso</p>
+                        <p>Ayam goreng tepung yang renyah di luar, juicy di dalam, disiram saus pedas manis.</p>
+                        <p><a href="detail.html">Lihat Detail Resep</a></p>
+                    </article>
+                </div>
+
+
+            </section>
+        </div>
     </main>
 
     <footer>
@@ -46,4 +59,5 @@
     </footer>
 
 </body>
+
 </html>

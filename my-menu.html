@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <title>Menu Saya & Tambah Resep - DapurKita</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
     <header>
@@ -18,79 +21,92 @@
 
     <main>
         <!-- Bagian 1: Tampilan Menu Makanan yang Pernah Dibuat -->
-        <section>
-            <h2>Menu Makanan yang Pernah Saya Buat</h2>
-            <p>Berikut adalah arsip resep pribadi yang telah Anda publikasikan.</p>
+        <div class="container">
+            <section>
+                <h2>Menu Makanan yang Pernah Saya Buat</h2>
+                <p>Berikut adalah arsip resep pribadi yang telah Anda publikasikan.</p>
 
-            <article>
-                <h3>Soto Ayam Lamongan</h3>
-                <p>Status: Dipublikasikan</p>
-                <p><a href="detail.html">Kelola / Lihat Resep</a></p>
-            </article>
-
-            <article>
-                <h3>Es Teh Manis Melati</h3>
-                <p>Status: Dipublikasikan</p>
-                <p><a href="detail.html">Kelola / Lihat Resep</a></p>
-            </article>
-        </section>
-
-        <hr>
-
-        <!-- Bagian 2: Tombol / Form Tambah Resep Baru -->
-        <section>
-            <h2>Tambah Resep Baru</h2>
-            <p>Isi formulir di bawah ini untuk membagikan resep kreasi Anda sendiri ke dalam aplikasi.</p>
-
-            <form action="#" method="POST" enctype="multipart/form-data">
-                
-                <div>
-                    <label for="nama-resep">Judul Resep:</label><br>
-                    <input type="text" id="nama-resep" name="nama_resep" required placeholder="Contoh: Rendang Daging Sapi">
-                </div>
-                <br>
-
-                <div>
-                    <label for="kategori-menu">Kategori Menu:</label><br>
-                    <select id="kategori-menu" name="kategori_menu">
-                        <option value="makanan-utama">Makanan Utama</option>
-                        <option value="camilan">Camilan</option>
-                        <option value="minuman">Minuman</option>
-                        <option value="penutup">Makanan Penutup</option>
-                    </select>
-                </div>
-                <br>
-
-                <div>
-                    <label for="deskripsi-resep">Deskripsi Singkat:</label><br>
-                    <textarea id="deskripsi-resep" name="deskripsi_resep" rows="4" cols="50" placeholder="Ceritakan sedikit tentang resep ini..."></textarea>
-                </div>
-                <br>
-
-                <div>
-                    <label for="bahan-resep">Input Bahan-Bahan:</label><br>
-                    <textarea id="bahan-resep" name="bahan_resep" rows="6" cols="50" placeholder="Tuliskan daftar bahan beserta takarannya (satu bahan per baris)..." required></textarea>
-                </div>
-                <br>
-
-                <div>
-                    <label for="langkah-resep">Langkah-Langkah Pengerjaan:</label><br>
-                    <textarea id="langkah-resep" name="langkah_resep" rows="8" cols="50" placeholder="Tuliskan tahapan memasak secara berurutan..." required></textarea>
-                </div>
-                <br>
-
-                <div>
-                    <label for="media-resep">Unggah Foto / Video Pendukung:</label><br>
-                    <input type="file" id="media-resep" name="media_resep" accept="image/*,video/*">
-                </div>
-                <br>
-
-                <div>
-                    <button type="submit">Simpan dan Publikasikan Resep</button>
+                <div class="card">
+                    <article>
+                        <h3>Soto Ayam Lamongan</h3>
+                        <p>Status: Dipublikasikan</p>
+                        <p><a href="detail.html">Kelola / Lihat Resep</a></p>
+                    </article>
                 </div>
 
-            </form>
-        </section>
+                <div class="card">
+                    <article>
+                        <h3>Es Teh Manis Melati</h3>
+                        <p>Status: Dipublikasikan</p>
+                        <p><a href="detail.html">Kelola / Lihat Resep</a></p>
+                    </article>
+                </div>
+            </section>
+
+            <hr>
+
+            <!-- Bagian 2: Tombol / Form Tambah Resep Baru -->
+            <section>
+                <h2>Tambah Resep Baru</h2>
+                <p>Isi formulir di bawah ini untuk membagikan resep kreasi Anda sendiri ke dalam aplikasi.</p>
+
+                <div class="card">
+                    <form action="#" method="POST" enctype="multipart/form-data">
+
+                        <div>
+                            <label for="nama-resep">Judul Resep:</label><br>
+                            <input type="text" id="nama-resep" name="nama_resep" required
+                                placeholder="Contoh: Rendang Daging Sapi">
+                        </div>
+                        <br>
+
+                        <div>
+                            <label for="kategori-menu">Kategori Menu:</label><br>
+                            <select id="kategori-menu" name="kategori_menu">
+                                <option value="makanan-utama">Makanan Utama</option>
+                                <option value="camilan">Camilan</option>
+                                <option value="minuman">Minuman</option>
+                                <option value="penutup">Makanan Penutup</option>
+                            </select>
+                        </div>
+                        <br>
+
+                        <div>
+                            <label for="deskripsi-resep">Deskripsi Singkat:</label><br>
+                            <textarea id="deskripsi-resep" name="deskripsi_resep" rows="4" cols="50"
+                                placeholder="Ceritakan sedikit tentang resep ini..."></textarea>
+                        </div>
+                        <br>
+
+                        <div>
+                            <label for="bahan-resep">Input Bahan-Bahan:</label><br>
+                            <textarea id="bahan-resep" name="bahan_resep" rows="6" cols="50"
+                                placeholder="Tuliskan daftar bahan beserta takarannya (satu bahan per baris)..."
+                                required></textarea>
+                        </div>
+                        <br>
+
+                        <div>
+                            <label for="langkah-resep">Langkah-Langkah Pengerjaan:</label><br>
+                            <textarea id="langkah-resep" name="langkah_resep" rows="8" cols="50"
+                                placeholder="Tuliskan tahapan memasak secara berurutan..." required></textarea>
+                        </div>
+                        <br>
+
+                        <div>
+                            <label for="media-resep">Unggah Foto / Video Pendukung:</label><br>
+                            <input type="file" id="media-resep" name="media_resep" accept="image/*,video/*">
+                        </div>
+                        <br>
+
+                        <div>
+                            <button type="submit">Simpan dan Publikasikan Resep</button>
+                        </div>
+
+                    </form>
+                </div>
+            </section>
+        </div>
     </main>
 
     <footer>
@@ -98,4 +114,5 @@
     </footer>
 
 </body>
+
 </html>
