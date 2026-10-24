@@ -2,153 +2,120 @@
 
 import { useState } from 'react';
 
+function DynamicInput({ title, items, placeholder, onChange }) {
+  const handleChange = (index, value) => {
+    const newItems = [...items];
+    newItems[index] = value;
+    onChange(newItems);
+  }
+
+  const handleAddInput = () => {
+    onChange([...items, '']);
+  }
+
+  return (
+    <div className="mb-4">
+      <label htmlFor="inputTitle"
+        className="block font-semibold mb-1"
+      >{title}</label>
+
+      {items.map((value, index) => (
+        <input
+          key={index}
+          type="text"
+          required
+          value={value}
+          onChange={(e) => handleChange(index, e.target.value)}
+          placeholder={`${placeholder} ${index + 1}`}
+          className="w-full border border-gray-300 p-2 rounded mb-2"
+        />
+      ))}
+
+      <button
+        type="button"
+        onClick={handleAddInput}
+        className="text-blue-600 text-sm font-bold mt-1"
+      >+ Tambah {title}</button>
+
+    </div>
+  );
+}
+
 export default function AddRecipePage() {
   const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [ingredients, setIngredients] = useState(['']);
+  const [desc, setDesc] = useState('');
+  const [ingredient, setIngredient] = useState(['']);
   const [steps, setSteps] = useState(['']);
-  const [image, setImage] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
 
-  const handleIngredientChange = (index, value) => {
-    const newIngredients = [...ingredients];
-    newIngredients[index] = value;
-    setIngredients(newIngredients);
-  };
-
-  const handleStepChange = (index, value) => {
-    const newSteps = [...steps];
-    newSteps[index] = value;
-    setSteps(newSteps);
-  };
-
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setIsLoading(true);
 
-    const formData = new FormData();
-    formData.append('title', title);
-    formData.append('description', description);
-    formData.append('ingredients', JSON.stringify(ingredients.filter(i => i.trim() !== '')));
-    formData.append('steps', JSON.stringify(steps.filter(s => s.trim() !== '')));
-    
-    if (image) {
-      formData.append('image', image);
-    }
+    const dataRecipe = {
+      title,
+      desc,
+      ingredient: ingredient.filter(i => i.trim() !== ''),
+      steps: steps.filter(s => s.trim() !== '')
+    };
 
-    try {
-      const response = await fetch('/api/recipes', {
-        method: 'POST',
-        body: formData,
-      });
+    console.log("Data: ", dataRecipe);
 
-      if (response.ok) {
-        alert('Resep berhasil disimpan!');
-        setTitle('');
-        setDescription('');
-        setIngredients(['']);
-        setSteps(['']);
-        setImage(null);
-      } else {
-        alert('Gagal menyimpan resep. Pastikan API sudah siap.');
-      }
-    } catch (error) {
-      console.error("Error:", error);
-      alert('Terjadi kesalahan saat mengirim data.');
-    } finally {
-      setIsLoading(false);
-    }
-  };
+    alert('Form Submitted!');
+  }
 
   return (
     <div className="max-w-2xl mx-auto p-6 mt-10 bg-white rounded-lg shadow-md text-black">
-      <h1 className="text-2xl font-bold mb-6">Tambah Resep Baru</h1>
+      <h1 className="text-2xl font-bold mb-6">Tambah Resep</h1>
+      <form action="" onSubmit={handleSubmit} className="space-y-4">
 
-      <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label className="block font-semibold mb-1">Judul Resep</label>
-          <input 
-            type="text" 
-            required 
-            value={title} 
-            onChange={(e) => setTitle(e.target.value)}
+          <label htmlFor="title" className="block font-semibold mb-1">Judul</label>
+          <input type="text"
+            required
+            value={title}
+            onChange={e => setTitle(e.target.value)}
             className="w-full border border-gray-300 p-2 rounded"
             placeholder="Contoh: Nasi Goreng Spesial"
           />
         </div>
 
         <div>
-          <label className="block font-semibold mb-1">Deskripsi Singkat</label>
-          <textarea 
-            required 
-            value={description} 
-            onChange={(e) => setDescription(e.target.value)}
-            className="w-full border border-gray-300 p-2 rounded h-24"
-            placeholder="Deskripsikan resep ini..."
-          />
-        </div>
-
-        <div>
-          <label className="block font-semibold mb-1">Bahan-bahan</label>
-          {ingredients.map((ingredient, index) => (
-            <input 
-              key={index}
-              type="text" 
-              required
-              value={ingredient} 
-              onChange={(e) => handleIngredientChange(index, e.target.value)}
-              className="w-full border border-gray-300 p-2 rounded mb-2"
-              placeholder={`Bahan ${index + 1}`}
-            />
-          ))}
-          <button 
-            type="button" 
-            onClick={() => setIngredients([...ingredients, ''])} 
-            className="text-blue-600 text-sm font-bold mt-1"
-          >
-            + Tambah Bahan
-          </button>
-        </div>
-
-        <div>
-          <label className="block font-semibold mb-1">Langkah-langkah</label>
-          {steps.map((step, index) => (
-            <textarea 
-              key={index}
-              required
-              value={step} 
-              onChange={(e) => handleStepChange(index, e.target.value)}
-              className="w-full border border-gray-300 p-2 rounded mb-2 h-16"
-              placeholder={`Langkah ${index + 1}`}
-            />
-          ))}
-          <button 
-            type="button" 
-            onClick={() => setSteps([...steps, ''])} 
-            className="text-blue-600 text-sm font-bold mt-1"
-          >
-            + Tambah Langkah
-          </button>
-        </div>
-
-        <div>
-          <label className="block font-semibold mb-1">Upload Foto Makanan</label>
-          <input 
-            type="file" 
+          <label htmlFor="description" className="block font-semibold mb-1">Deskripsi</label>
+          <textarea
             required
-            accept="image/*" 
-            onChange={(e) => setImage(e.target.files[0])}
+            value={desc}
+            onChange={e => setDesc(e.target.value)}
+            className="w-full border border-gray-300 p-2 rounded"
+            placeholder="Deskripsikan resep ini..."
+          ></textarea>
+        </div>
+
+        <DynamicInput
+          title="Bahan-bahan"
+          items={ingredient}
+          placeholder="Bahan"
+          onChange={setIngredient}
+        />
+
+        <DynamicInput
+          title="Langkah-langkah"
+          items={steps}
+          placeholder="Langkah"
+          onChange={setSteps}
+        />
+
+        <div>
+          <label htmlFor="photo" className="block font-semibold mb-1">Upload Foto Makanan</label>
+          <input type="file"
+            accept='image/*'
             className="w-full border border-gray-300 p-2 rounded"
           />
         </div>
 
-        <button 
-          type="submit" 
-          disabled={isLoading}
-          className="w-full bg-blue-600 text-white p-3 rounded font-bold hover:bg-blue-700 disabled:bg-gray-400 mt-4"
-        >
-          {isLoading ? 'Menyimpan...' : 'Simpan / Publikasikan Resep'}
-        </button>
+        <button
+          type="submit"
+          className="w-full bg-blue-600 text-white p-3 rounded font-bold hover:bg-blue-700 mt-4"
+        >Submit Resep</button>
+
       </form>
     </div>
   );
