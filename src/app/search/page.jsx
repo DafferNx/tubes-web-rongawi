@@ -38,16 +38,6 @@ export default function SearchPage() {
           Cari Resep
         </button>
       </div>
-
-      <p className="text-sm text-gray-500 mt-3">Tampilan sementara, pencarian belum diaktifkan.</p>
-
-      <h2 className="text-xl font-bold mt-6 mb-3">Contoh Hasil Pencarian</h2>
-      <div className="border border-gray-300 p-4 rounded">
-        <h3 className="text-lg font-bold">Nasi Goreng</h3>
-        <p className="text-sm text-gray-500 mb-2">Makanan Berat</p>
-        <p>Nasi goreng sederhana dengan telur dan kecap.</p>
-        <p className="text-sm mt-2">Oleh Dina</p>
-      </div>
     </div>
   );
 }
