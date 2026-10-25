@@ -16,12 +16,7 @@ export default function LoginPage() {
     const dummyEmail = "user@gmail.com";
     const dummyPass = "123456";
 
-    const savedUser = JSON.parse(localStorage.getItem('registeredUser') || '{}');
-
-    const isValidDummy = email === dummyEmail && password === dummyPass;
-    const isValidRegistered = email === savedUser.email && password === savedUser.password;
-
-    if (isValidDummy || isValidRegistered) {
+    if (email === dummyEmail && password === dummyPass) {
       alert('Login Berhasil!');
       router.push('/');
     } else {
