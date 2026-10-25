@@ -2,16 +2,22 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export default function RegisterPage() {
+  const router = useRouter();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Register data:", { name, email, password });
-    alert('Registrasi Berhasil!');
+
+    const userData = { name, email, password };
+    localStorage.setItem('registeredUser', JSON.stringify(userData));
+
+    alert('Registrasi Berhasil! Silakan masuk.');
+    router.push('/login');
   };
 
   return (

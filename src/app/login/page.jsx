@@ -2,20 +2,42 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export default function LoginPage() {
+  const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Login data:", { email, password });
-    alert('Login Berhasil!');
+
+    const dummyEmail = "user@gmail.com";
+    const dummyPass = "123456";
+
+    const savedUser = JSON.parse(localStorage.getItem('registeredUser') || '{}');
+
+    const isValidDummy = email === dummyEmail && password === dummyPass;
+    const isValidRegistered = email === savedUser.email && password === savedUser.password;
+
+    if (isValidDummy || isValidRegistered) {
+      alert('Login Berhasil!');
+      router.push('/');
+    } else {
+      setError('Email atau password salah!');
+    }
   };
 
   return (
     <div className="max-w-md mx-auto p-6 mt-10 bg-white rounded-lg shadow-md text-black">
       <h1 className="text-2xl font-bold mb-6 text-center">Masuk</h1>
+
+      {error && (
+        <div className="mb-4 p-2 bg-red-100 text-red-600 rounded text-sm text-center font-semibold">
+          {error}
+        </div>
+      )}
       
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
@@ -27,7 +49,7 @@ export default function LoginPage() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className="w-full border border-gray-300 p-2 rounded"
-            placeholder="nama@email.com"
+            placeholder="user@gmail.com"
           />
         </div>
 
@@ -40,7 +62,7 @@ export default function LoginPage() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             className="w-full border border-gray-300 p-2 rounded"
-            placeholder="••••••••"
+            placeholder="123456"
           />
         </div>
 
