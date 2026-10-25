@@ -80,7 +80,11 @@ export default function LoginPage() {
           <Link href="/register" className="font-bold underline hover:text-green-300">
             Signup
           </Link>
+<<<<<<< HEAD
         </p>
+=======
+        </p>  
+>>>>>>> main
       </div>
     </div>
   );

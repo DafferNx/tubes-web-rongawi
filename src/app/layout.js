@@ -1,4 +1,5 @@
 import "./globals.css";
+import Navbar from "@/components/Navbar";
 
 export const metadata = {
   title: "Forum Resep | Inspirasi masakan sehari-hari",
@@ -11,7 +12,10 @@ export default function RootLayout({ children }) {
       lang="id"
       className="h-full antialiased"
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <Navbar />
+        <main id="konten" className="flex-1">{children}</main>
+      </body>
     </html>
   );
 }

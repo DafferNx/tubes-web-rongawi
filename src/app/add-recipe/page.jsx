@@ -34,7 +34,7 @@ function DynamicInput({ title, items, placeholder, onChange }) {
       <button
         type="button"
         onClick={handleAddInput}
-        className="text-blue-600 text-sm font-bold mt-1"
+        className="text-green-800 text-sm font-bold mt-1"
       >+ Tambah {title}</button>
 
     </div>
@@ -113,7 +113,7 @@ export default function AddRecipePage() {
 
         <button
           type="submit"
-          className="w-full bg-blue-600 text-white p-3 rounded font-bold hover:bg-blue-700 mt-4"
+          className="w-full bg-green-800 text-white p-3 rounded font-bold hover:bg-blue-700 mt-4"
         >Submit Resep</button>
 
       </form>
