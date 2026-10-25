@@ -80,11 +80,7 @@ export default function LoginPage() {
           <Link href="/register" className="font-bold underline hover:text-green-300">
             Signup
           </Link>
-        </p>
-
-        <p className="mt-8 text-center text-xs text-gray-300">
-          Created by <span className="italic font-semibold">anggidwiiputra</span>
-        </p>
+        </p>  
       </div>
     </div>
   );
