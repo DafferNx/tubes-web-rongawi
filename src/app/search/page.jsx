@@ -7,7 +7,7 @@ export default function SearchPage() {
         Kembali ke Beranda
       </Link>
 
-      <h1 className="text-2xl font-bold mt-4 mb-6">Cari Resep</h1>
+      <h1 className="text-2xl font-bold mt-4 mb-6">Cari Resep</h1>  
 
       <div className="space-y-4">
         <div>
