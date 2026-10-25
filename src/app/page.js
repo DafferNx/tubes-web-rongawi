@@ -1,6 +1,7 @@
-// Data dummy (nanti diganti dengan GET /api/recipes)
+
 import Link from "next/link";
 
+// Data dummy (nanti diganti dengan GET /api/recipes)
 const recipes = [
   {
     id: 1,
