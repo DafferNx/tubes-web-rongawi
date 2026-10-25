@@ -82,9 +82,6 @@ export default function RegisterPage() {
           </Link>
         </p>
 
-        <p className="mt-8 text-center text-xs text-gray-300">
-          Created by <span className="italic font-semibold">anggidwiiputra</span>
-        </p>
       </div>
     </div>
   );
