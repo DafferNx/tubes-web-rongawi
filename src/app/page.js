@@ -77,7 +77,7 @@ export default function Home() {
                 <h3 className="text-lg font-semibold text-stone-800">{recipe.title}</h3>
                 <p className="mb-4 text-sm text-stone-500">oleh {recipe.author}</p>
                 <Link
-                  href=""
+                  href="/recipe-detail"
                   className="inline-block rounded-lg bg-green-800 px-4 py-2 text-sm font-medium text-white hover:bg-green-900"
                 >
                   Detail
