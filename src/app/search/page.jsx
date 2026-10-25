@@ -17,6 +17,7 @@ export default function SearchPage() {
   );
 
   return (
+<<<<<<< HEAD
     <div className="max-w-4xl mx-auto p-6">
       <h1 className="text-3xl font-bold text-green-800 mb-2">Cari Resep</h1>
       <p className="text-gray-500 mb-6">Inspirasi masakan untuk harimu.</p>
@@ -25,6 +26,43 @@ export default function SearchPage() {
         <select aria-label="Kategori" value={category} onChange={(e) => setCategory(e.target.value)} className="border border-gray-300 rounded-lg p-3 bg-white">
           {categories.map((c) => <option key={c}>{c}</option>)}
         </select>
+=======
+    <div className="max-w-2xl mx-auto p-6 mt-10 bg-white rounded-lg shadow-md text-black">
+      <Link href="/" className="text-blue-600 hover:underline">
+        Kembali ke Beranda
+      </Link>
+
+      <h1 className="text-2xl font-bold mt-4 mb-6">Cari Resep</h1>  
+
+      <div className="space-y-4">
+        <div>
+          <label htmlFor="keyword" className="block font-semibold mb-1">
+            Nama Resep
+          </label>
+          <input
+            id="keyword"
+            type="text"
+            className="w-full border border-gray-300 p-2 rounded"
+            placeholder="Contoh: Nasi Goreng"
+          />
+        </div>
+
+        <div>
+          <label htmlFor="category" className="block font-semibold mb-1">
+            Kategori
+          </label>
+          <select id="category" className="w-full border border-gray-300 p-2 rounded">
+            <option>Semua Kategori</option>
+            <option>Makanan Berat</option>
+            <option>Dessert</option>
+            <option>Minuman</option>
+          </select>
+        </div>
+
+        <button type="button" className="w-full bg-blue-600 text-white p-3 rounded font-bold hover:bg-blue-700">
+          Cari Resep
+        </button>
+>>>>>>> fadhil
       </div>
       <p className="text-sm text-gray-500 my-5">Riwayat contoh: Nasi Goreng · Kue Cokelat · Es Lemon</p>
       <h2 className="text-xl font-bold mb-4">Pilihan Resep</h2>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 import Link from "next/link";
 
@@ -90,3 +91,10 @@ export default function Home() {
     </div>
   );
 }
+=======
+import { redirect } from 'next/navigation';
+
+export default function HomePage() {
+  redirect('/login');
+}
+>>>>>>> fadhil
