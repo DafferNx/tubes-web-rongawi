@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import axios from 'axios';
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -15,40 +16,20 @@ export default function RegisterPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
 
-  // ── Client-side validation ──────────────────────────────────────────────────
   const validate = () => {
-    if (!name.trim()) {
-      return 'Nama lengkap tidak boleh kosong.';
-    }
-    if (name.trim().length < 3) {
-      return 'Nama lengkap minimal 3 karakter.';
-    }
-    if (!email.trim()) {
-      return 'Email tidak boleh kosong.';
-    }
+    if (!name.trim()) return 'Nama lengkap tidak boleh kosong.';
+    if (name.trim().length < 3) return 'Nama lengkap minimal 3 karakter.';
+    if (!email.trim()) return 'Email tidak boleh kosong.';
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      return 'Format email tidak valid.';
-    }
-    if (!password) {
-      return 'Password tidak boleh kosong.';
-    }
-    if (password.length < 6) {
-      return 'Password minimal 6 karakter.';
-    }
-    if (!/[A-Za-z]/.test(password) || !/[0-9]/.test(password)) {
-      return 'Password harus mengandung huruf dan angka.';
-    }
-    if (!confirmPassword) {
-      return 'Konfirmasi password tidak boleh kosong.';
-    }
-    if (password !== confirmPassword) {
-      return 'Password dan konfirmasi password tidak sama.';
-    }
-    return null; // no error
+    if (!emailRegex.test(email)) return 'Format email tidak valid.';
+    if (!password) return 'Password tidak boleh kosong.';
+    if (password.length < 6) return 'Password minimal 6 karakter.';
+    if (!/[A-Za-z]/.test(password) || !/[0-9]/.test(password)) return 'Password harus mengandung huruf dan angka.';
+    if (!confirmPassword) return 'Konfirmasi password tidak boleh kosong.';
+    if (password !== confirmPassword) return 'Password dan konfirmasi password tidak sama.';
+    return null;
   };
 
-  // ── Password strength indicator ─────────────────────────────────────────────
   const getPasswordStrength = () => {
     if (!password) return { level: 0, label: '', color: '' };
     let score = 0;
@@ -57,7 +38,6 @@ export default function RegisterPage() {
     if (/[A-Z]/.test(password)) score++;
     if (/[0-9]/.test(password)) score++;
     if (/[^A-Za-z0-9]/.test(password)) score++;
-
     if (score <= 1) return { level: 1, label: 'Lemah', color: 'bg-red-500' };
     if (score <= 3) return { level: 2, label: 'Sedang', color: 'bg-yellow-400' };
     return { level: 3, label: 'Kuat', color: 'bg-green-500' };
@@ -65,12 +45,10 @@ export default function RegisterPage() {
 
   const strength = getPasswordStrength();
 
-  // ── Submit handler ──────────────────────────────────────────────────────────
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
 
-    // Run client-side validation first
     const validationError = validate();
     if (validationError) {
       setError(validationError);
@@ -80,13 +58,20 @@ export default function RegisterPage() {
     setLoading(true);
 
     try {
-      // Simulate async registration (e.g. API call delay)
-      await new Promise((resolve) => setTimeout(resolve, 1200));
+      const response = await axios.post('https://reqres.in/api/register', {
+        email,
+        password,
+      });
 
-      // Success → redirect to login
-      router.push('/login');
+      if (response.data.token) {
+        router.push('/login');
+      }
     } catch (err) {
-      setError('Terjadi kesalahan. Silakan coba lagi.');
+      if (err.response && err.response.data && err.response.data.error) {
+        setError(err.response.data.error);
+      } else {
+        setError('Terjadi kesalahan. Silakan coba lagi.');
+      }
     } finally {
       setLoading(false);
     }
@@ -97,10 +82,8 @@ export default function RegisterPage() {
       className="min-h-screen flex items-center justify-center bg-cover bg-center px-4 py-8 relative"
       style={{ backgroundImage: "url('/food-register.jpg')" }}
     >
-      {/* Overlay */}
       <div className="absolute inset-0 bg-black/40" aria-hidden="true"></div>
 
-      {/* Card */}
       <main
         className="relative z-10 w-full max-w-md p-8 bg-white/10 backdrop-blur-md rounded-3xl border border-white/20 text-white shadow-2xl"
         role="main"
@@ -110,43 +93,22 @@ export default function RegisterPage() {
           Create your account to get started.
         </p>
 
-        {/* ── Error State ─────────────────────────────────────────────────── */}
         {error && (
           <div
             role="alert"
             aria-live="polite"
             className="mb-4 flex items-center gap-2 p-3 bg-red-500/80 text-white rounded-xl text-sm font-semibold"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5 shrink-0"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-              aria-hidden="true"
-            >
-              <path
-                fillRule="evenodd"
-                d="M18 10A8 8 0 11 2 10a8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
-                clipRule="evenodd"
-              />
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fillRule="evenodd" d="M18 10A8 8 0 11 2 10a8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
             </svg>
             <span>{error}</span>
           </div>
         )}
 
-        {/* ── Form ────────────────────────────────────────────────────────── */}
-        <form
-          onSubmit={handleSubmit}
-          className="space-y-4"
-          noValidate
-          aria-label="Register form"
-        >
-          {/* Full Name */}
+        <form onSubmit={handleSubmit} className="space-y-4" noValidate aria-label="Register form">
           <div className="flex flex-col gap-1">
-            <label
-              htmlFor="register-name"
-              className="text-sm font-medium text-gray-200"
-            >
+            <label htmlFor="register-name" className="text-sm font-medium text-gray-200">
               Nama Lengkap
             </label>
             <input
@@ -156,22 +118,15 @@ export default function RegisterPage() {
               required
               autoComplete="name"
               value={name}
-              onChange={(e) => {
-                setName(e.target.value);
-                if (error) setError('');
-              }}
+              onChange={(e) => { setName(e.target.value); if (error) setError(''); }}
               disabled={loading}
               className="w-full bg-white/10 border border-white/40 rounded-xl px-4 py-3 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 disabled:opacity-50 transition"
               placeholder="John Doe"
             />
           </div>
 
-          {/* Email */}
           <div className="flex flex-col gap-1">
-            <label
-              htmlFor="register-email"
-              className="text-sm font-medium text-gray-200"
-            >
+            <label htmlFor="register-email" className="text-sm font-medium text-gray-200">
               Email Address
             </label>
             <input
@@ -181,22 +136,15 @@ export default function RegisterPage() {
               required
               autoComplete="email"
               value={email}
-              onChange={(e) => {
-                setEmail(e.target.value);
-                if (error) setError('');
-              }}
+              onChange={(e) => { setEmail(e.target.value); if (error) setError(''); }}
               disabled={loading}
               className="w-full bg-white/10 border border-white/40 rounded-xl px-4 py-3 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 disabled:opacity-50 transition"
-              placeholder="user@gmail.com"
+              placeholder="eve.holt@reqres.in"
             />
           </div>
 
-          {/* Password */}
           <div className="flex flex-col gap-1">
-            <label
-              htmlFor="register-password"
-              className="text-sm font-medium text-gray-200"
-            >
+            <label htmlFor="register-password" className="text-sm font-medium text-gray-200">
               Password
             </label>
             <div className="relative">
@@ -207,10 +155,7 @@ export default function RegisterPage() {
                 required
                 autoComplete="new-password"
                 value={password}
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                  if (error) setError('');
-                }}
+                onChange={(e) => { setPassword(e.target.value); if (error) setError(''); }}
                 disabled={loading}
                 className="w-full bg-white/10 border border-white/40 rounded-xl px-4 py-3 pr-12 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 disabled:opacity-50 transition"
                 placeholder="Minimal 6 karakter"
@@ -234,25 +179,19 @@ export default function RegisterPage() {
               </button>
             </div>
 
-            {/* ── Password Strength Indicator ──────────────────────────── */}
             {password && (
               <div className="mt-1" aria-live="polite" aria-label={`Kekuatan password: ${strength.label}`}>
                 <div className="flex gap-1 mb-1">
                   {[1, 2, 3].map((lvl) => (
                     <div
                       key={lvl}
-                      className={`h-1 flex-1 rounded-full transition-all ${
-                        strength.level >= lvl ? strength.color : 'bg-white/20'
-                      }`}
+                      className={`h-1 flex-1 rounded-full transition-all ${strength.level >= lvl ? strength.color : 'bg-white/20'}`}
                     />
                   ))}
                 </div>
                 <p className="text-xs text-gray-300">
                   Kekuatan password:{' '}
-                  <span className={`font-semibold ${
-                    strength.level === 1 ? 'text-red-400' :
-                    strength.level === 2 ? 'text-yellow-300' : 'text-green-400'
-                  }`}>
+                  <span className={`font-semibold ${strength.level === 1 ? 'text-red-400' : strength.level === 2 ? 'text-yellow-300' : 'text-green-400'}`}>
                     {strength.label}
                   </span>
                 </p>
@@ -260,12 +199,8 @@ export default function RegisterPage() {
             )}
           </div>
 
-          {/* Confirm Password */}
           <div className="flex flex-col gap-1">
-            <label
-              htmlFor="register-confirm"
-              className="text-sm font-medium text-gray-200"
-            >
+            <label htmlFor="register-confirm" className="text-sm font-medium text-gray-200">
               Konfirmasi Password
             </label>
             <div className="relative">
@@ -276,16 +211,9 @@ export default function RegisterPage() {
                 required
                 autoComplete="new-password"
                 value={confirmPassword}
-                onChange={(e) => {
-                  setConfirmPassword(e.target.value);
-                  if (error) setError('');
-                }}
+                onChange={(e) => { setConfirmPassword(e.target.value); if (error) setError(''); }}
                 disabled={loading}
-                className={`w-full bg-white/10 border rounded-xl px-4 py-3 pr-12 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 disabled:opacity-50 transition ${
-                  confirmPassword && password !== confirmPassword
-                    ? 'border-red-400'
-                    : 'border-white/40'
-                }`}
+                className={`w-full bg-white/10 border rounded-xl px-4 py-3 pr-12 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 disabled:opacity-50 transition ${confirmPassword && password !== confirmPassword ? 'border-red-400' : 'border-white/40'}`}
                 placeholder="Ulangi password"
               />
               <button
@@ -306,7 +234,6 @@ export default function RegisterPage() {
                 )}
               </button>
             </div>
-            {/* Inline mismatch hint */}
             {confirmPassword && password !== confirmPassword && (
               <p className="text-xs text-red-400 mt-1" role="alert">
                 Password tidak cocok.
@@ -314,7 +241,6 @@ export default function RegisterPage() {
             )}
           </div>
 
-          {/* ── Submit Button with Loading State ────────────────────────── */}
           <button
             type="submit"
             disabled={loading}
@@ -323,13 +249,7 @@ export default function RegisterPage() {
           >
             {loading ? (
               <>
-                <svg
-                  className="animate-spin h-5 w-5 text-white"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
+                <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" aria-hidden="true">
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                   <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
                 </svg>
@@ -343,10 +263,7 @@ export default function RegisterPage() {
 
         <p className="mt-6 text-center text-sm text-gray-200">
           Already have an account?{' '}
-          <Link
-            href="/login"
-            className="font-bold underline hover:text-green-300 focus:outline-none focus:ring-1 focus:ring-green-400 rounded"
-          >
+          <Link href="/login" className="font-bold underline hover:text-green-300 focus:outline-none focus:ring-1 focus:ring-green-400 rounded">
             Login
           </Link>
         </p>
