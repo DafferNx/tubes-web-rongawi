@@ -1,0 +1,7 @@
+[
+  { "id": "makanan-utama", "name": "Makanan Utama" },
+  { "id": "sarapan", "name": "Sarapan" },
+  { "id": "dessert", "name": "Dessert & Kue" },
+  { "id": "minuman", "name": "Minuman Segar" },
+  { "id": "camilan", "name": "Camilan" }
+]
