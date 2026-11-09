@@ -71,12 +71,10 @@ function RecipeRowCard({ recipe, rank }) {
           {recipe.name}
         </h3>
 
-        {/* Rating bintang (tampil jika ada rank / top recipes) */}
-        {rank && (
-          <div className="mt-1">
-            <StarRating rating={recipe.rating} comments={recipe.comments} />
-          </div>
-        )}
+        {/* Rating bintang (tampil di semua card) */}
+        <div className="mt-1">
+          <StarRating rating={recipe.rating} comments={recipe.comments} />
+        </div>
 
         {/* Lama waktu masak */}
         {recipe.cookingTime && (
@@ -103,8 +101,8 @@ function RecipeRowCard({ recipe, rank }) {
           Oleh <span className="font-semibold text-stone-800">{recipe.author}</span>
         </p>
 
-        {/* Waktu diposting (khusus new recipes) */}
-        {!rank && recipe.datePosted && (
+        {/* Waktu diposting (tampil di semua card) */}
+        {recipe.datePosted && (
           <p suppressHydrationWarning className="mt-1 text-[10px] text-stone-400 sm:text-[11px]">
             {formatRelativeTime(recipe.datePosted)}
           </p>
