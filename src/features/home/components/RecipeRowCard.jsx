@@ -7,8 +7,7 @@ export default function RecipeRowCard({ recipe, rank }) {
     ? recipe.image
     : `https://images.unsplash.com/${recipe.image}?auto=format&fit=crop&w=500&h=500&q=80`;
 
-  const isNasiGoreng = recipe.name?.toLowerCase().includes('nasi goreng');
-  const targetHref = isNasiGoreng ? '/recipe-detail' : undefined;
+  const targetHref = `/recipe-detail/${recipe.id}`;
 
   const cardContent = (
     <article className={`group relative flex h-full flex-col overflow-hidden rounded-2xl border border-stone-200 bg-white transition-all duration-200 hover:-translate-y-1 hover:shadow-md ${targetHref ? 'cursor-pointer' : ''}`}>

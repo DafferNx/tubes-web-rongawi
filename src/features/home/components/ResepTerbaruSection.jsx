@@ -42,8 +42,7 @@ export default function ResepTerbaruSection({ recipes }) {
     ? featuredRecipe.image
     : `https://images.unsplash.com/${featuredRecipe.image}?auto=format&fit=crop&w=800&h=550&q=80`;
 
-  const isFeaturedNasiGoreng = featuredRecipe.name?.toLowerCase().includes('nasi goreng');
-  const featuredHref = isFeaturedNasiGoreng ? '/recipe-detail' : undefined;
+  const featuredHref = `/recipe-detail/${featuredRecipe.id}`;
 
   return (
     <section aria-labelledby="judul-resep-terbaru" className="mb-14">
@@ -117,8 +116,7 @@ export default function ResepTerbaruSection({ recipes }) {
             const sideImg = item.image?.startsWith('http')
               ? item.image
               : `https://images.unsplash.com/${item.image}?auto=format&fit=crop&w=400&h=300&q=80`;
-            const isItemNasiGoreng = item.name?.toLowerCase().includes('nasi goreng');
-            const itemHref = isItemNasiGoreng ? '/recipe-detail' : undefined;
+            const itemHref = `/recipe-detail/${item.id}`;
 
             const horizontalCard = (
               <article className={`group flex items-center overflow-hidden rounded-2xl border border-stone-200 bg-white p-2.5 sm:p-3 shadow-xs transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md ${itemHref ? 'cursor-pointer' : ''}`}>
