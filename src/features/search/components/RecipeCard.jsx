@@ -21,7 +21,7 @@ export default function RecipeCard({ recipe, href }) {
     ? recipe.image
     : `https://images.unsplash.com/${recipe.image}?auto=format&fit=crop&w=640&h=420&q=80`;
 
-  const targetHref = href ?? (recipe.name?.toLowerCase().includes('nasi goreng') ? '/recipe-detail' : undefined);
+  const targetHref = href ?? `/recipe-detail/${recipe.id}`;
 
   const cardElement = (
     <Card className={`flex h-full flex-col overflow-hidden transition-all duration-200 ${targetHref ? 'cursor-pointer hover:-translate-y-1 hover:shadow-md' : ''}`}>

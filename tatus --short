@@ -1,0 +1,21 @@
+warning: in the working copy of 'src/app/api/recipes/[id]/comments/route.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/api/recipes/[id]/route.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/recipe-detail/[id]/page.jsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/recipe-detail/page.jsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/features/recipe-detail/api/mockRecipeDetail.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/features/recipe-detail/api/recipeDetailApi.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/features/recipe-detail/components/CommentSection.jsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/features/recipe-detail/components/IngredientList.jsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/features/recipe-detail/components/RecipeDetailPage.jsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/features/recipe-detail/components/RecipeDetailSkeleton.jsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/features/recipe-detail/components/RecipeHero.jsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/features/recipe-detail/components/StepList.jsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/features/recipe-detail/data/recipe-comments.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/features/recipe-detail/hooks/useComments.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/features/recipe-detail/hooks/useRecipeDetail.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/features/recipe-detail/index.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/features/recipe-detail/server.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/features/search/components/RecipeCard.jsx', LF will be replaced by CRLF the next time Git touches it
+ src/app/recipe-detail/page.jsx                | 4 [32m++[m[31m--[m
+ src/features/search/components/RecipeCard.jsx | 2 [32m+[m[31m-[m
+ 2 files changed, 3 insertions(+), 3 deletions(-)
