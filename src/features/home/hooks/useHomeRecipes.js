@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { fetchRecipes } from '@/shared/api/recipes';
+import { getHomeRecipes } from '../api/homeApi';
 import { getErrorMessage } from '@/shared/lib/axiosClient';
 
 export function useHomeRecipes() {
@@ -13,7 +13,7 @@ export function useHomeRecipes() {
     try {
       setIsLoading(true);
       setErrorMessage(null);
-      const data = await fetchRecipes(signal);
+      const data = await getHomeRecipes(signal);
       setRecipes(data);
     } catch (err) {
       if (signal?.aborted) return;

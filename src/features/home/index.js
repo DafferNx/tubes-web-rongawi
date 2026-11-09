@@ -5,4 +5,5 @@ export { default as RecipeSection } from './components/RecipeSection';
 export { default as RecipeRowCard } from './components/RecipeRowCard';
 export { default as StarRating } from './components/StarRating';
 export { useHomeRecipes } from './hooks/useHomeRecipes';
+export * from './api';
 
