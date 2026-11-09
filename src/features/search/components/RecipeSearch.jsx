@@ -75,7 +75,7 @@ export default function RecipeSearch() {
             <h2 id="results-title" className="font-serif text-3xl text-green-950">{resultTitle}</h2>
             <p role="status" className="mt-1 text-sm text-stone-600">
               {/* shadcn Skeleton: placeholder saat memuat. */}
-            {isLoading && 'Mencari resep…'}
+              {isLoading && 'Mencari resep…'}
               {result?.recipes && `${recipes.length} resep ditemukan`}
             </p>
           </div>

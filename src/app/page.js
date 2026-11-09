@@ -1,93 +1,251 @@
-import { redirect } from 'next/navigation';
+'use client';
 
-import Link from "next/link";
+import { useRef, useState } from 'react';
+import Link from 'next/link';
+import recipesData from '@/features/search/data/recipes.json';
+import { formatRelativeTime } from '@/shared/lib/dateUtils';
 
-// Data dummy (nanti diganti dengan GET /api/recipes)
-const recipes = [
-  {
-    id: 1,
-    title: 'Nasi Goreng Kampung',
-    author: 'Budi',
-    image: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?w=600',
-  },
-  {
-    id: 2,
-    title: 'Sate Ayam Madura',
-    author: 'Siti',
-    image: 'https://images.unsplash.com/photo-1529563021893-cc83c992d75d?w=600',
-  },
-  {
-    id: 3,
-    title: 'Mie Goreng Spesial',
-    author: 'Andi',
-    image: 'https://images.unsplash.com/photo-1585032226651-759b368d7246?w=600',
-  },
-  {
-    id: 4,
-    title: 'Soto Ayam Lamongan',
-    author: 'Rina',
-    image: 'https://images.unsplash.com/photo-1547592180-85f173990554?w=600',
-  },
-  {
-    id: 5,
-    title: 'Pancake Pisang',
-    author: 'Dewi',
-    image: 'https://images.unsplash.com/photo-1528207776546-365bb710ee93?w=600',
-  },
-  {
-    id: 6,
-    title: 'Salad Sayur Segar',
-    author: 'Joko',
-    image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600',
-  },
-];
+// Resep baru diurutkan berdasarkan datePosted
+const newRecipes = [...recipesData]
+  .sort((a, b) => new Date(b.datePosted).getTime() - new Date(a.datePosted).getTime())
+  .slice(0, 10);
+
+// Resep terpopuler diurutkan berdasarkan jumlah tayangan (views)
+const topRecipes = [...recipesData]
+  .sort((a, b) => (b.views || 0) - (a.views || 0))
+  .slice(0, 10);
+
+function StarRating({ rating = 5, comments = 0 }) {
+  const fullStars = Math.floor(rating);
+  return (
+    <div className="flex items-center gap-1 text-amber-500">
+      <div className="flex text-xs tracking-tighter">
+        {[1, 2, 3, 4, 5].map((star) => (
+          <span key={star}>{star <= fullStars ? '★' : '☆'}</span>
+        ))}
+      </div>
+      <span className="text-[11px] font-medium text-stone-500">({comments})</span>
+    </div>
+  );
+}
+
+function RecipeRowCard({ recipe, rank, isFavorite, onToggleFavorite }) {
+  const imageUrl = recipe.image?.startsWith('http')
+    ? recipe.image
+    : `https://images.unsplash.com/${recipe.image}?auto=format&fit=crop&w=500&h=500&q=80`;
+
+  const isNasiGoreng = recipe.name?.toLowerCase().includes('nasi goreng');
+  const targetHref = isNasiGoreng ? '/recipe-detail' : undefined;
+
+  const cardContent = (
+    <div className={`group relative flex h-full flex-col overflow-hidden rounded-2xl border border-stone-200 bg-white transition-all duration-200 hover:-translate-y-1 hover:shadow-md ${targetHref ? 'cursor-pointer' : ''}`}>
+      {/* Container Gambar */}
+      <div className="relative aspect-square w-full overflow-hidden bg-stone-100">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={imageUrl}
+          alt={recipe.name}
+          loading="lazy"
+          className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+        />
+
+        {/* Badge Nomor Peringkat (khusus Top Recipes) */}
+        {rank && (
+          <div className="absolute left-2.5 top-2.5 z-10 flex size-9 items-center justify-center rounded-full bg-[#200e3f] text-base font-black text-white shadow-md ring-2 ring-white/70 sm:size-10 sm:text-lg">
+            {rank}
+          </div>
+        )}
+
+        {/* Tombol Simpan / Favorit (Heart Icon) */}
+        <button
+          type="button"
+          aria-label={isFavorite ? 'Hapus dari favorit' : 'Simpan ke favorit'}
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            onToggleFavorite(recipe.id);
+          }}
+          className="absolute right-2.5 top-2.5 z-10 grid size-8 place-items-center rounded-full bg-black/30 text-white backdrop-blur-xs transition hover:bg-black/50"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill={isFavorite ? '#ef4444' : 'none'}
+            stroke={isFavorite ? '#ef4444' : 'white'}
+            strokeWidth="2.2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="size-4.5 drop-shadow"
+          >
+            <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+          </svg>
+        </button>
+      </div>
+
+      {/* Konten Card */}
+      <div className="flex flex-1 flex-col p-3 sm:p-3.5">
+        <h3 className="line-clamp-2 text-sm font-bold text-stone-900 transition-colors group-hover:text-green-800 sm:text-base leading-snug">
+          {recipe.name}
+        </h3>
+
+        {/* Rating bintang (tampil jika ada rank / top recipes) */}
+        {rank && (
+          <div className="mt-1">
+            <StarRating rating={recipe.rating} comments={recipe.comments} />
+          </div>
+        )}
+
+        {/* Lama waktu masak */}
+        {recipe.cookingTime && (
+          <div className="mt-1.5 flex items-center gap-1 text-[11px] text-stone-600 sm:text-xs">
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="size-3.5 shrink-0 text-stone-400"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg>
+            <span>{recipe.cookingTime}</span>
+          </div>
+        )}
+
+        {/* Penulis resep */}
+        <p className="mt-1 text-[11px] text-stone-500 sm:text-xs">
+          Oleh <span className="font-semibold text-stone-800">{recipe.author}</span>
+        </p>
+
+        {/* Waktu diposting (khusus new recipes) */}
+        {!rank && recipe.datePosted && (
+          <p suppressHydrationWarning className="mt-1 text-[10px] text-stone-400 sm:text-[11px]">
+            {formatRelativeTime(recipe.datePosted)}
+          </p>
+        )}
+      </div>
+    </div>
+  );
+
+  if (targetHref) {
+    return (
+      <Link href={targetHref} className="block h-full group focus-visible:outline-2 focus-visible:outline-green-700 rounded-2xl">
+        {cardContent}
+      </Link>
+    );
+  }
+
+  return cardContent;
+}
+
+function RecipeSection({ title, recipes, isRanked = false, favorites, onToggleFavorite }) {
+  const scrollRef = useRef(null);
+
+  const handleScroll = (direction) => {
+    if (!scrollRef.current) return;
+    const amount = direction === 'left' ? -350 : 350;
+    scrollRef.current.scrollBy({ left: amount, behavior: 'smooth' });
+  };
+
+  return (
+    <section className="mb-12">
+      {/* Header Bagian */}
+      <div className="mb-4 flex items-center justify-between">
+        <h2 className="font-sans text-xl font-bold tracking-tight text-stone-900 sm:text-2xl lg:text-3xl">
+          {title}
+        </h2>
+
+        {/* Tombol Panah Kiri & Kanan */}
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            aria-label="Geser resep ke kiri"
+            onClick={() => handleScroll('left')}
+            className="grid size-8 place-items-center rounded-full border border-stone-300 bg-white text-stone-700 shadow-2xs transition hover:bg-stone-100 active:scale-95 sm:size-9"
+          >
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="size-4">
+              <path d="m15 18-6-6 6-6" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            aria-label="Geser resep ke kanan"
+            onClick={() => handleScroll('right')}
+            className="grid size-8 place-items-center rounded-full border border-stone-300 bg-white text-stone-700 shadow-2xs transition hover:bg-stone-100 active:scale-95 sm:size-9"
+          >
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="size-4">
+              <path d="m9 18 6-6-6-6" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      {/* Baris Card (Responsive 6 Kolom di Layar Besar, Scrollable Horizontal di Mobile/Tablet) */}
+      <div
+        ref={scrollRef}
+        className="flex gap-3 overflow-x-auto scroll-smooth pb-3 pt-1 sm:gap-4 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+      >
+        {recipes.map((recipe, index) => (
+          <div
+            key={recipe.id}
+            className="w-[160px] shrink-0 sm:w-[185px] lg:w-[calc((100%-5*1rem)/6)]"
+          >
+            <RecipeRowCard
+              recipe={recipe}
+              rank={isRanked ? index + 1 : null}
+              isFavorite={favorites.includes(recipe.id)}
+              onToggleFavorite={onToggleFavorite}
+            />
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
 
 export default function Home() {
+  const [favorites, setFavorites] = useState([]);
+
+  const toggleFavorite = (id) => {
+    setFavorites((prev) =>
+      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
+    );
+  };
+
   return (
-    <div className="mx-auto max-w-6xl px-5 py-10">
+    <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
       {/* Hero Section */}
-      <section className="mb-10 rounded-2xl bg-green-800 px-8 py-14 text-center text-white">
-        <h1 className="mb-3 text-3xl font-bold">Selamat Datang di Ruang Resep</h1>
+      <section className="mb-12 rounded-2xl bg-green-800 px-6 py-12 text-center text-white sm:px-8 sm:py-14">
+        <h1 className="mb-3 font-serif text-3xl font-bold sm:text-4xl">Selamat Datang di Ruang Resep</h1>
         <p className="mb-6 text-green-100">
           Temukan dan bagikan resep masakan favoritmu bersama pengguna lain.
         </p>
         <Link
           href="/search"
-          className="rounded-lg bg-white px-6 py-3 font-medium text-green-800 hover:bg-green-50"
+          className="rounded-lg bg-white px-6 py-3 font-medium text-green-800 transition-colors hover:bg-green-50"
         >
           Cari Resep
         </Link>
       </section>
 
-      {/* Feed / Grid Postingan */}
-      <section>
-        <h2 className="mb-5 text-2xl font-bold text-stone-800">Resep Terbaru</h2>
+      {/* Bagian 1: New Recipes You'll Love */}
+      <RecipeSection
+        title="New Recipes You'll Love"
+        recipes={newRecipes}
+        favorites={favorites}
+        onToggleFavorite={toggleFavorite}
+      />
 
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {recipes.map((recipe) => (
-            <div
-              key={recipe.id}
-              className="overflow-hidden rounded-xl border border-stone-200 bg-white shadow-sm"
-            >
-              <img
-                src={recipe.image}
-                alt={recipe.title}
-                className="h-48 w-full object-cover"
-              />
-              <div className="p-4">
-                <h3 className="text-lg font-semibold text-stone-800">{recipe.title}</h3>
-                <p className="mb-4 text-sm text-stone-500">oleh {recipe.author}</p>
-                <Link
-                  href="/recipe-detail"
-                  className="inline-block rounded-lg bg-green-800 px-4 py-2 text-sm font-medium text-white hover:bg-green-900"
-                >
-                  Detail
-                </Link>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+      {/* Bagian 2: This Week's Top Recipes */}
+      <RecipeSection
+        title="This Week's Top Recipes"
+        recipes={topRecipes}
+        isRanked={true}
+        favorites={favorites}
+        onToggleFavorite={toggleFavorite}
+      />
     </div>
   );
 }
