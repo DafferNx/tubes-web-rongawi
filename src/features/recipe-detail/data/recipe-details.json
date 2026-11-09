@@ -1,0 +1,408 @@
+{
+  "1": {
+    "description": "Nasi goreng rumahan dengan bumbu sederhana, wangi bawang, dan telur orak-arik.",
+    "duration": 25,
+    "servings": 2,
+    "difficulty": "Mudah",
+    "ingredients": [
+      "2 piring nasi putih dingin",
+      "2 butir telur",
+      "3 siung bawang putih, cincang",
+      "2 sdm kecap manis",
+      "1 sdm saus tiram",
+      "Garam dan merica secukupnya"
+    ],
+    "steps": [
+      "Panaskan minyak, tumis bawang putih hingga harum.",
+      "Masukkan telur, orak-arik hingga setengah matang.",
+      "Tambahkan nasi, aduk rata dengan api besar.",
+      "Beri kecap manis, saus tiram, garam, dan merica. Aduk hingga matang.",
+      "Angkat dan sajikan selagi hangat."
+    ]
+  },
+  "2": {
+    "description": "Kue cokelat lembut dengan tekstur moist, cocok untuk camilan sore.",
+    "duration": 60,
+    "servings": 8,
+    "difficulty": "Sedang",
+    "ingredients": [
+      "200 g tepung terigu",
+      "150 g gula pasir",
+      "100 g cokelat batang",
+      "100 g mentega",
+      "3 butir telur",
+      "1 sdt baking powder"
+    ],
+    "steps": [
+      "Panaskan oven 170°C dan olesi loyang dengan mentega.",
+      "Lelehkan cokelat bersama mentega, dinginkan sebentar.",
+      "Kocok telur dan gula hingga mengembang.",
+      "Masukkan lelehan cokelat, lalu ayak tepung dan baking powder. Aduk rata.",
+      "Tuang ke loyang, panggang 35 menit hingga matang."
+    ]
+  },
+  "3": {
+    "description": "Minuman lemon segar dengan rasa asam manis seimbang.",
+    "duration": 5,
+    "servings": 2,
+    "difficulty": "Mudah",
+    "ingredients": [
+      "2 buah lemon, peras",
+      "3 sdm gula pasir",
+      "400 ml air dingin",
+      "Es batu secukupnya",
+      "Daun mint untuk hiasan"
+    ],
+    "steps": [
+      "Peras lemon dan buang bijinya.",
+      "Larutkan gula dengan sedikit air hangat.",
+      "Campur air lemon, sirup gula, dan air dingin.",
+      "Tuang ke gelas berisi es batu.",
+      "Hias dengan daun mint dan sajikan."
+    ]
+  },
+  "4": {
+    "description": "Sate ayam dengan bumbu kacang kental khas Madura.",
+    "duration": 50,
+    "servings": 4,
+    "difficulty": "Sedang",
+    "ingredients": [
+      "500 g daging ayam fillet",
+      "Tusuk sate secukupnya",
+      "150 g kacang tanah goreng, haluskan",
+      "4 sdm kecap manis",
+      "3 siung bawang putih",
+      "Jeruk nipis dan bawang merah iris"
+    ],
+    "steps": [
+      "Potong ayam kotak kecil, tusuk pada tusukan sate.",
+      "Marinasi dengan bawang putih, kecap, dan garam selama 30 menit.",
+      "Haluskan kacang, campur kecap dan air hingga menjadi saus.",
+      "Bakar sate sambil dioles bumbu hingga matang kecokelatan.",
+      "Sajikan dengan saus kacang, bawang merah, dan jeruk nipis."
+    ]
+  },
+  "5": {
+    "description": "Pancake pisang empuk, manis alami tanpa banyak gula.",
+    "duration": 20,
+    "servings": 3,
+    "difficulty": "Mudah",
+    "ingredients": [
+      "150 g tepung terigu",
+      "2 buah pisang matang",
+      "1 butir telur",
+      "200 ml susu cair",
+      "1 sdt baking powder",
+      "Madu untuk topping"
+    ],
+    "steps": [
+      "Lumatkan satu pisang, campur dengan telur dan susu.",
+      "Masukkan tepung dan baking powder, aduk hingga licin.",
+      "Panaskan wajan antilengket dengan api kecil.",
+      "Tuang adonan, masak hingga bergelembung lalu balik.",
+      "Sajikan dengan irisan pisang dan madu."
+    ]
+  },
+  "6": {
+    "description": "Mi goreng pedas manis dengan sayuran dan telur.",
+    "duration": 20,
+    "servings": 2,
+    "difficulty": "Mudah",
+    "ingredients": [
+      "2 bungkus mi telur",
+      "2 butir telur",
+      "1 buah sawi hijau",
+      "3 siung bawang putih",
+      "2 sdm kecap manis",
+      "1 sdm saus sambal"
+    ],
+    "steps": [
+      "Rebus mi sebentar lalu tiriskan.",
+      "Tumis bawang putih hingga harum.",
+      "Masukkan telur dan orak-arik, tambahkan sawi.",
+      "Masukkan mi, kecap manis, dan saus sambal.",
+      "Aduk rata hingga bumbu meresap dan sajikan."
+    ]
+  },
+  "7": {
+    "description": "Salad sayur renyah dengan dressing lemon-minyak zaitun.",
+    "duration": 10,
+    "servings": 2,
+    "difficulty": "Mudah",
+    "ingredients": [
+      "1 ikat selada",
+      "1 buah tomat",
+      "1 buah mentimun",
+      "1/2 bawang bombay",
+      "2 sdm minyak zaitun",
+      "1 sdm air lemon"
+    ],
+    "steps": [
+      "Cuci semua sayuran dan tiriskan.",
+      "Potong selada, tomat, mentimun, dan bawang bombay.",
+      "Campur minyak zaitun, air lemon, garam, dan merica.",
+      "Tuang dressing ke sayuran dan aduk pelan.",
+      "Sajikan segera selagi segar."
+    ]
+  },
+  "8": {
+    "description": "Sup sayur bening yang menghangatkan, ringan dan sehat.",
+    "duration": 30,
+    "servings": 4,
+    "difficulty": "Mudah",
+    "ingredients": [
+      "2 buah wortel",
+      "1 buah kentang",
+      "100 g buncis",
+      "2 siung bawang putih",
+      "1 liter air atau kaldu",
+      "Garam dan merica secukupnya"
+    ],
+    "steps": [
+      "Tumis bawang putih hingga harum.",
+      "Tuang air atau kaldu, didihkan.",
+      "Masukkan kentang dan wortel, masak 10 menit.",
+      "Tambahkan buncis, masak 5 menit lagi.",
+      "Bumbui dengan garam dan merica, sajikan hangat."
+    ]
+  },
+  "9": {
+    "description": "Roti panggang dengan alpukat lembut untuk sarapan cepat.",
+    "duration": 10,
+    "servings": 1,
+    "difficulty": "Mudah",
+    "ingredients": [
+      "2 lembar roti tawar",
+      "1 buah alpukat matang",
+      "1 sdt air jeruk nipis",
+      "1 butir telur (opsional)",
+      "Garam dan lada hitam"
+    ],
+    "steps": [
+      "Panggang roti hingga renyah.",
+      "Hancurkan alpukat dengan garam dan jeruk nipis.",
+      "Oleskan alpukat di atas roti.",
+      "Tambahkan telur rebus atau goreng jika suka.",
+      "Taburi lada hitam dan sajikan."
+    ]
+  },
+  "10": {
+    "description": "Oatmeal hangat dengan buah segar, sarapan mengenyangkan.",
+    "duration": 10,
+    "servings": 1,
+    "difficulty": "Mudah",
+    "ingredients": [
+      "50 g oat instan",
+      "250 ml susu atau air",
+      "1 buah pisang, iris",
+      "Segenggam stroberi",
+      "1 sdt madu"
+    ],
+    "steps": [
+      "Didihkan susu dalam panci kecil.",
+      "Masukkan oat, aduk 3–5 menit hingga kental.",
+      "Pindahkan ke mangkuk.",
+      "Tata irisan pisang dan stroberi di atasnya.",
+      "Tetesi madu dan sajikan."
+    ]
+  },
+  "11": {
+    "description": "Telur dipanggang dalam saus tomat, ala shakshuka sederhana.",
+    "duration": 25,
+    "servings": 2,
+    "difficulty": "Mudah",
+    "ingredients": [
+      "3 butir telur",
+      "3 buah tomat, cincang",
+      "1 siung bawang putih",
+      "1/2 bawang bombay",
+      "1 sdm minyak zaitun",
+      "Roti untuk pendamping"
+    ],
+    "steps": [
+      "Tumis bawang bombay dan bawang putih hingga layu.",
+      "Masukkan tomat, masak hingga menjadi saus.",
+      "Buat lubang kecil pada saus, pecahkan telur di dalamnya.",
+      "Tutup dan masak 5–7 menit hingga telur setengah matang.",
+      "Sajikan langsung dengan roti."
+    ]
+  },
+  "12": {
+    "description": "Kentang goreng renyah di luar, lembut di dalam.",
+    "duration": 30,
+    "servings": 3,
+    "difficulty": "Mudah",
+    "ingredients": [
+      "3 buah kentang besar",
+      "Minyak untuk menggoreng",
+      "1 sdt garam",
+      "1/2 sdt lada",
+      "Saus sambal untuk cocolan"
+    ],
+    "steps": [
+      "Kupas kentang dan potong memanjang.",
+      "Rendam dalam air dingin 15 menit, tiriskan dan keringkan.",
+      "Goreng dengan api sedang hingga keemasan.",
+      "Angkat dan tiriskan.",
+      "Taburi garam dan lada, sajikan dengan saus."
+    ]
+  },
+  "13": {
+    "description": "Popcorn gurih buatan sendiri dengan mentega dan garam.",
+    "duration": 10,
+    "servings": 2,
+    "difficulty": "Mudah",
+    "ingredients": [
+      "50 g biji jagung popcorn",
+      "2 sdm minyak",
+      "2 sdm mentega cair",
+      "1/2 sdt garam"
+    ],
+    "steps": [
+      "Panaskan minyak dalam panci tebal.",
+      "Masukkan biji jagung dan tutup rapat.",
+      "Goyang panci hingga letupan mereda.",
+      "Angkat, tuang mentega cair dan garam.",
+      "Kocok hingga rata dan sajikan."
+    ]
+  },
+  "14": {
+    "description": "Nachos dengan saus keju meleleh dan topping segar.",
+    "duration": 15,
+    "servings": 3,
+    "difficulty": "Mudah",
+    "ingredients": [
+      "200 g tortilla chips",
+      "150 g keju cheddar parut",
+      "1 buah tomat, cincang",
+      "1 buah cabai jalapeño",
+      "Sour cream secukupnya"
+    ],
+    "steps": [
+      "Panaskan oven 180°C.",
+      "Tata chips di loyang, taburi keju.",
+      "Panggang 5–7 menit hingga keju meleleh.",
+      "Tambahkan tomat dan jalapeño.",
+      "Sajikan dengan sour cream."
+    ]
+  },
+  "15": {
+    "description": "Salmon panggang berbumbu lemon, kaya omega-3.",
+    "duration": 25,
+    "servings": 2,
+    "difficulty": "Sedang",
+    "ingredients": [
+      "2 potong fillet salmon",
+      "1 buah lemon",
+      "2 siung bawang putih, parut",
+      "1 sdm minyak zaitun",
+      "Garam, lada, dan dill"
+    ],
+    "steps": [
+      "Panaskan oven 200°C.",
+      "Lumuri salmon dengan minyak zaitun, bawang putih, garam, dan lada.",
+      "Letakkan di loyang beralas kertas, tambahkan irisan lemon.",
+      "Panggang 12–15 menit hingga matang.",
+      "Taburi dill dan sajikan."
+    ]
+  },
+  "16": {
+    "description": "Udang panggang bawang putih, cepat dan gurih.",
+    "duration": 20,
+    "servings": 3,
+    "difficulty": "Mudah",
+    "ingredients": [
+      "300 g udang besar",
+      "4 siung bawang putih",
+      "2 sdm mentega",
+      "1 sdm air jeruk nipis",
+      "Peterseli cincang"
+    ],
+    "steps": [
+      "Bersihkan udang, sisakan ekor.",
+      "Campur dengan bawang putih, mentega, dan jeruk nipis.",
+      "Diamkan 10 menit.",
+      "Panggang atau bakar 3–4 menit per sisi.",
+      "Taburi peterseli dan sajikan."
+    ]
+  },
+  "17": {
+    "description": "Pasta dengan saus tomat segar yang kaya rasa.",
+    "duration": 25,
+    "servings": 2,
+    "difficulty": "Mudah",
+    "ingredients": [
+      "200 g spaghetti",
+      "4 buah tomat, cincang",
+      "3 siung bawang putih",
+      "2 sdm minyak zaitun",
+      "Daun basil dan keju parmesan"
+    ],
+    "steps": [
+      "Rebus pasta hingga al dente, tiriskan.",
+      "Tumis bawang putih dengan minyak zaitun.",
+      "Masukkan tomat, masak 10 menit hingga mengental.",
+      "Campur pasta ke dalam saus.",
+      "Sajikan dengan basil dan parmesan."
+    ]
+  },
+  "18": {
+    "description": "Es kopi susu kekinian dengan gula aren.",
+    "duration": 5,
+    "servings": 1,
+    "difficulty": "Mudah",
+    "ingredients": [
+      "2 shot espresso atau 60 ml kopi pekat",
+      "150 ml susu segar",
+      "2 sdm sirup gula aren",
+      "Es batu secukupnya"
+    ],
+    "steps": [
+      "Isi gelas dengan es batu.",
+      "Tuang sirup gula aren dan susu.",
+      "Tuang kopi pelan-pelan di atasnya.",
+      "Aduk sebelum diminum."
+    ]
+  },
+  "19": {
+    "description": "Smoothie stroberi creamy dan menyegarkan.",
+    "duration": 5,
+    "servings": 2,
+    "difficulty": "Mudah",
+    "ingredients": [
+      "200 g stroberi segar",
+      "1 buah pisang",
+      "150 ml susu atau yoghurt",
+      "1 sdm madu",
+      "Es batu secukupnya"
+    ],
+    "steps": [
+      "Cuci stroberi dan buang tangkainya.",
+      "Masukkan semua bahan ke blender.",
+      "Blender hingga halus.",
+      "Cicipi, tambah madu jika perlu.",
+      "Tuang ke gelas dan sajikan dingin."
+    ]
+  },
+  "20": {
+    "description": "Kukis cokelat chewy dengan chocochip melimpah.",
+    "duration": 35,
+    "servings": 12,
+    "difficulty": "Sedang",
+    "ingredients": [
+      "200 g tepung terigu",
+      "100 g mentega",
+      "100 g gula merah",
+      "1 butir telur",
+      "150 g chocochip",
+      "1/2 sdt baking soda"
+    ],
+    "steps": [
+      "Panaskan oven 175°C.",
+      "Kocok mentega dan gula hingga lembut, masukkan telur.",
+      "Campur tepung dan baking soda, aduk ke adonan.",
+      "Masukkan chocochip, bentuk bulatan pada loyang.",
+      "Panggang 12 menit hingga tepi kecokelatan."
+    ]
+  }
+}

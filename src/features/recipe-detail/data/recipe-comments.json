@@ -1,0 +1,288 @@
+{
+  "1": [
+    {
+      "id": "seed-1-0",
+      "user": "Siti",
+      "text": "Enak banget, mudah dibuat!",
+      "createdAt": "2026-11-01T08:00:00.000Z"
+    },
+    {
+      "id": "seed-1-1",
+      "user": "Andi",
+      "text": "Aku tambah cabai, makin mantap.",
+      "createdAt": "2026-11-02T08:00:00.000Z"
+    }
+  ],
+  "2": [
+    {
+      "id": "seed-2-0",
+      "user": "Siti",
+      "text": "Enak banget, mudah dibuat!",
+      "createdAt": "2026-11-01T08:00:00.000Z"
+    },
+    {
+      "id": "seed-2-1",
+      "user": "Andi",
+      "text": "Aku tambah cabai, makin mantap.",
+      "createdAt": "2026-11-02T08:00:00.000Z"
+    },
+    {
+      "id": "seed-2-2",
+      "user": "Dewi",
+      "text": "Takarannya pas, keluarga suka.",
+      "createdAt": "2026-11-03T08:00:00.000Z"
+    }
+  ],
+  "3": [
+    {
+      "id": "seed-3-0",
+      "user": "Siti",
+      "text": "Enak banget, mudah dibuat!",
+      "createdAt": "2026-11-01T08:00:00.000Z"
+    }
+  ],
+  "4": [
+    {
+      "id": "seed-4-0",
+      "user": "Siti",
+      "text": "Enak banget, mudah dibuat!",
+      "createdAt": "2026-11-01T08:00:00.000Z"
+    },
+    {
+      "id": "seed-4-1",
+      "user": "Andi",
+      "text": "Aku tambah cabai, makin mantap.",
+      "createdAt": "2026-11-02T08:00:00.000Z"
+    }
+  ],
+  "5": [
+    {
+      "id": "seed-5-0",
+      "user": "Siti",
+      "text": "Enak banget, mudah dibuat!",
+      "createdAt": "2026-11-01T08:00:00.000Z"
+    },
+    {
+      "id": "seed-5-1",
+      "user": "Andi",
+      "text": "Aku tambah cabai, makin mantap.",
+      "createdAt": "2026-11-02T08:00:00.000Z"
+    },
+    {
+      "id": "seed-5-2",
+      "user": "Dewi",
+      "text": "Takarannya pas, keluarga suka.",
+      "createdAt": "2026-11-03T08:00:00.000Z"
+    }
+  ],
+  "6": [
+    {
+      "id": "seed-6-0",
+      "user": "Siti",
+      "text": "Enak banget, mudah dibuat!",
+      "createdAt": "2026-11-01T08:00:00.000Z"
+    }
+  ],
+  "7": [
+    {
+      "id": "seed-7-0",
+      "user": "Siti",
+      "text": "Enak banget, mudah dibuat!",
+      "createdAt": "2026-11-01T08:00:00.000Z"
+    },
+    {
+      "id": "seed-7-1",
+      "user": "Andi",
+      "text": "Aku tambah cabai, makin mantap.",
+      "createdAt": "2026-11-02T08:00:00.000Z"
+    }
+  ],
+  "8": [
+    {
+      "id": "seed-8-0",
+      "user": "Siti",
+      "text": "Enak banget, mudah dibuat!",
+      "createdAt": "2026-11-01T08:00:00.000Z"
+    },
+    {
+      "id": "seed-8-1",
+      "user": "Andi",
+      "text": "Aku tambah cabai, makin mantap.",
+      "createdAt": "2026-11-02T08:00:00.000Z"
+    },
+    {
+      "id": "seed-8-2",
+      "user": "Dewi",
+      "text": "Takarannya pas, keluarga suka.",
+      "createdAt": "2026-11-03T08:00:00.000Z"
+    }
+  ],
+  "9": [
+    {
+      "id": "seed-9-0",
+      "user": "Siti",
+      "text": "Enak banget, mudah dibuat!",
+      "createdAt": "2026-11-01T08:00:00.000Z"
+    }
+  ],
+  "10": [
+    {
+      "id": "seed-10-0",
+      "user": "Siti",
+      "text": "Enak banget, mudah dibuat!",
+      "createdAt": "2026-11-01T08:00:00.000Z"
+    },
+    {
+      "id": "seed-10-1",
+      "user": "Andi",
+      "text": "Aku tambah cabai, makin mantap.",
+      "createdAt": "2026-11-02T08:00:00.000Z"
+    }
+  ],
+  "11": [
+    {
+      "id": "seed-11-0",
+      "user": "Siti",
+      "text": "Enak banget, mudah dibuat!",
+      "createdAt": "2026-11-01T08:00:00.000Z"
+    },
+    {
+      "id": "seed-11-1",
+      "user": "Andi",
+      "text": "Aku tambah cabai, makin mantap.",
+      "createdAt": "2026-11-02T08:00:00.000Z"
+    },
+    {
+      "id": "seed-11-2",
+      "user": "Dewi",
+      "text": "Takarannya pas, keluarga suka.",
+      "createdAt": "2026-11-03T08:00:00.000Z"
+    }
+  ],
+  "12": [
+    {
+      "id": "seed-12-0",
+      "user": "Siti",
+      "text": "Enak banget, mudah dibuat!",
+      "createdAt": "2026-11-01T08:00:00.000Z"
+    }
+  ],
+  "13": [
+    {
+      "id": "seed-13-0",
+      "user": "Siti",
+      "text": "Enak banget, mudah dibuat!",
+      "createdAt": "2026-11-01T08:00:00.000Z"
+    },
+    {
+      "id": "seed-13-1",
+      "user": "Andi",
+      "text": "Aku tambah cabai, makin mantap.",
+      "createdAt": "2026-11-02T08:00:00.000Z"
+    }
+  ],
+  "14": [
+    {
+      "id": "seed-14-0",
+      "user": "Siti",
+      "text": "Enak banget, mudah dibuat!",
+      "createdAt": "2026-11-01T08:00:00.000Z"
+    },
+    {
+      "id": "seed-14-1",
+      "user": "Andi",
+      "text": "Aku tambah cabai, makin mantap.",
+      "createdAt": "2026-11-02T08:00:00.000Z"
+    },
+    {
+      "id": "seed-14-2",
+      "user": "Dewi",
+      "text": "Takarannya pas, keluarga suka.",
+      "createdAt": "2026-11-03T08:00:00.000Z"
+    }
+  ],
+  "15": [
+    {
+      "id": "seed-15-0",
+      "user": "Siti",
+      "text": "Enak banget, mudah dibuat!",
+      "createdAt": "2026-11-01T08:00:00.000Z"
+    }
+  ],
+  "16": [
+    {
+      "id": "seed-16-0",
+      "user": "Siti",
+      "text": "Enak banget, mudah dibuat!",
+      "createdAt": "2026-11-01T08:00:00.000Z"
+    },
+    {
+      "id": "seed-16-1",
+      "user": "Andi",
+      "text": "Aku tambah cabai, makin mantap.",
+      "createdAt": "2026-11-02T08:00:00.000Z"
+    }
+  ],
+  "17": [
+    {
+      "id": "seed-17-0",
+      "user": "Siti",
+      "text": "Enak banget, mudah dibuat!",
+      "createdAt": "2026-11-01T08:00:00.000Z"
+    },
+    {
+      "id": "seed-17-1",
+      "user": "Andi",
+      "text": "Aku tambah cabai, makin mantap.",
+      "createdAt": "2026-11-02T08:00:00.000Z"
+    },
+    {
+      "id": "seed-17-2",
+      "user": "Dewi",
+      "text": "Takarannya pas, keluarga suka.",
+      "createdAt": "2026-11-03T08:00:00.000Z"
+    }
+  ],
+  "18": [
+    {
+      "id": "seed-18-0",
+      "user": "Siti",
+      "text": "Enak banget, mudah dibuat!",
+      "createdAt": "2026-11-01T08:00:00.000Z"
+    }
+  ],
+  "19": [
+    {
+      "id": "seed-19-0",
+      "user": "Siti",
+      "text": "Enak banget, mudah dibuat!",
+      "createdAt": "2026-11-01T08:00:00.000Z"
+    },
+    {
+      "id": "seed-19-1",
+      "user": "Andi",
+      "text": "Aku tambah cabai, makin mantap.",
+      "createdAt": "2026-11-02T08:00:00.000Z"
+    }
+  ],
+  "20": [
+    {
+      "id": "seed-20-0",
+      "user": "Siti",
+      "text": "Enak banget, mudah dibuat!",
+      "createdAt": "2026-11-01T08:00:00.000Z"
+    },
+    {
+      "id": "seed-20-1",
+      "user": "Andi",
+      "text": "Aku tambah cabai, makin mantap.",
+      "createdAt": "2026-11-02T08:00:00.000Z"
+    },
+    {
+      "id": "seed-20-2",
+      "user": "Dewi",
+      "text": "Takarannya pas, keluarga suka.",
+      "createdAt": "2026-11-03T08:00:00.000Z"
+    }
+  ]
+}
