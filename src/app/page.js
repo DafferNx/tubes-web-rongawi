@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import Link from 'next/link';
 import recipesData from '@/features/search/data/recipes.json';
 import { formatRelativeTime } from '@/shared/lib/dateUtils';
@@ -29,7 +29,7 @@ function StarRating({ rating = 5, comments = 0 }) {
   );
 }
 
-function RecipeRowCard({ recipe, rank, isFavorite, onToggleFavorite }) {
+function RecipeRowCard({ recipe, rank }) {
   const imageUrl = recipe.image?.startsWith('http')
     ? recipe.image
     : `https://images.unsplash.com/${recipe.image}?auto=format&fit=crop&w=500&h=500&q=80`;
@@ -55,30 +55,6 @@ function RecipeRowCard({ recipe, rank, isFavorite, onToggleFavorite }) {
             {rank}
           </div>
         )}
-
-        {/* Tombol Simpan / Favorit (Heart Icon) */}
-        <button
-          type="button"
-          aria-label={isFavorite ? 'Hapus dari favorit' : 'Simpan ke favorit'}
-          onClick={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            onToggleFavorite(recipe.id);
-          }}
-          className="absolute right-2.5 top-2.5 z-10 grid size-8 place-items-center rounded-full bg-black/30 text-white backdrop-blur-xs transition hover:bg-black/50"
-        >
-          <svg
-            viewBox="0 0 24 24"
-            fill={isFavorite ? '#ef4444' : 'none'}
-            stroke={isFavorite ? '#ef4444' : 'white'}
-            strokeWidth="2.2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="size-4.5 drop-shadow"
-          >
-            <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
-          </svg>
-        </button>
       </div>
 
       {/* Konten Card */}
@@ -140,7 +116,7 @@ function RecipeRowCard({ recipe, rank, isFavorite, onToggleFavorite }) {
   return cardContent;
 }
 
-function RecipeSection({ title, recipes, isRanked = false, favorites, onToggleFavorite }) {
+function RecipeSection({ title, recipes, isRanked = false }) {
   const scrollRef = useRef(null);
 
   const handleScroll = (direction) => {
@@ -163,7 +139,7 @@ function RecipeSection({ title, recipes, isRanked = false, favorites, onToggleFa
             type="button"
             aria-label="Geser resep ke kiri"
             onClick={() => handleScroll('left')}
-            className="grid size-8 place-items-center rounded-full border border-stone-300 bg-white text-stone-700 shadow-2xs transition hover:bg-stone-100 active:scale-95 sm:size-9"
+            className="grid size-8 place-items-center rounded-full border border-stone-300 bg-white text-stone-700 shadow-2xs transition hover:bg-stone-100 active:scale-95 sm:size-9 cursor-pointer"
           >
             <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="size-4">
               <path d="m15 18-6-6 6-6" />
@@ -173,7 +149,7 @@ function RecipeSection({ title, recipes, isRanked = false, favorites, onToggleFa
             type="button"
             aria-label="Geser resep ke kanan"
             onClick={() => handleScroll('right')}
-            className="grid size-8 place-items-center rounded-full border border-stone-300 bg-white text-stone-700 shadow-2xs transition hover:bg-stone-100 active:scale-95 sm:size-9"
+            className="grid size-8 place-items-center rounded-full border border-stone-300 bg-white text-stone-700 shadow-2xs transition hover:bg-stone-100 active:scale-95 sm:size-9 cursor-pointer"
           >
             <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="size-4">
               <path d="m9 18 6-6-6-6" />
@@ -195,8 +171,6 @@ function RecipeSection({ title, recipes, isRanked = false, favorites, onToggleFa
             <RecipeRowCard
               recipe={recipe}
               rank={isRanked ? index + 1 : null}
-              isFavorite={favorites.includes(recipe.id)}
-              onToggleFavorite={onToggleFavorite}
             />
           </div>
         ))}
@@ -206,14 +180,6 @@ function RecipeSection({ title, recipes, isRanked = false, favorites, onToggleFa
 }
 
 export default function Home() {
-  const [favorites, setFavorites] = useState([]);
-
-  const toggleFavorite = (id) => {
-    setFavorites((prev) =>
-      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
-    );
-  };
-
   return (
     <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
       {/* Hero Section */}
@@ -232,19 +198,15 @@ export default function Home() {
 
       {/* Bagian 1: New Recipes You'll Love */}
       <RecipeSection
-        title="New Recipes You'll Love"
+        title="Resep Terbaru"
         recipes={newRecipes}
-        favorites={favorites}
-        onToggleFavorite={toggleFavorite}
       />
 
       {/* Bagian 2: This Week's Top Recipes */}
       <RecipeSection
-        title="This Week's Top Recipes"
+        title="Resep Populer Minggu Ini"
         recipes={topRecipes}
         isRanked={true}
-        favorites={favorites}
-        onToggleFavorite={toggleFavorite}
       />
     </div>
   );
